@@ -66,8 +66,12 @@ float oro_enemigos(float oro, int numeroDeBichos)
 //           El gamegameha hace 25 de daño, requiere de 250 chakra para ser usado y no puede dejar el enemigo con vida negativa
 int gamegameha(int vidaEnemigo, int chakra)
 {
-	if (chakra >= 250 && vidaEnemigo >25)
-	return vidaEnemigo - 25;
+	if (chakra >= 250 && vidaEnemigo > 25)
+		return vidaEnemigo - 25;
+	else if (chakra >= 250 && vidaEnemigo < 25)
+		return 0;
+	else
+		return vidaEnemigo;
 }
 
 // Después de que nuestro equipo de robots asiáticos haya probado el modo competitivo de Cat Ball nos hemos dado cuenta de que
@@ -75,7 +79,7 @@ int gamegameha(int vidaEnemigo, int chakra)
 // El gamegameha sólo debe acertar si el enemigo esta a la derecha del personaje!!!!
 bool gamegameha_golpea(int personajeX, int personajeY, int enemigoX, int enemigoY)
 {
-	return personajeY > enemigoX;
+	return (personajeX < enemigoX && personajeY < enemigoY);
 }
 
 // Tus éxitos en Válvula juegos serán recordados. Hydraulic Arts te ha ofrecido el triple de sueldo
