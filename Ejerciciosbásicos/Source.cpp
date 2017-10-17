@@ -92,7 +92,16 @@ bool gamegameha_golpea(int personajeX, int personajeY, int enemigoX, int enemigo
 // * Devuelvas su peso aumentado en 2 unidades si son dulces.
 float princess_food(float weight, char type)
 {
-	return weight;
+	if(type == 'V')
+	{
+		return weight * 0.99;
+	}
+	else if (type == 'M')
+	{
+		return weight * 1.02;
+	}
+	else
+	return weight +=2;
 }
 
 // Debido a tus constantes fracasos en Danbay Conami, te han cedido a la Tienda de Humo más grande de internet.
@@ -101,7 +110,13 @@ float princess_food(float weight, char type)
 // El diseñador dios Gaben te ha pedido que hagas una función que le diga si un enemigo es immortal o no.
 bool casi_muerto(int hp, float tiempoQueLlevaEnImmortal)
 {
-	return tiempoQueLlevaEnImmortal > 1.0f;
+	if (hp < 25)
+	{
+		return tiempoQueLlevaEnImmortal < 1.0f;
+	}
+
+	else 
+		return tiempoQueLlevaEnImmortal = 0;
 }
 
 // Medal of Leonor ha sido un fracaso, no obstante Hydraulic Arts decide mantenerte en plantilla, tu crunch time valió la pena!
@@ -115,7 +130,15 @@ bool casi_muerto(int hp, float tiempoQueLlevaEnImmortal)
 //    "Lo máximo entre un 3% del coste de la obra o el 10% del presupuesto" menos un euro de comisión para vankia
 unsigned int president_evil(unsigned int presupuesto, unsigned int costeObra)
 {
-	return costeObra;
+	float obra = costeObra * 0.03;
+	float pres = presupuesto * 0.10;
+	if (obra < pres) {
+		return pres - 1;
+	}
+	else if(pres < obra)
+	{
+		return obra - 1;
+	}
 }
 
 // Tras los repetidos fracasos de todos los productos en los que has pasado, el CTO de Hydraulic Arts te asigna al 
@@ -128,7 +151,14 @@ unsigned int president_evil(unsigned int presupuesto, unsigned int costeObra)
 // * Un enemigo no puede eliminarse dos veces
 bool eliminar_enemigo(unsigned char boton, bool yaEliminado, bool enCinematica, int fecha)
 {
-	return fecha > 20180924;
+	if (boton == 'X' && yaEliminado == false && enCinematica == false)
+	{
+		return fecha >= 20180924;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // Pese a tus continuos escándalos en la indústria incluyendo fracasos y traiciones, "Yoshiaki Kurosawa", 
@@ -143,7 +173,23 @@ bool eliminar_enemigo(unsigned char boton, bool yaEliminado, bool enCinematica, 
 // - 'N' para norte (arriba)
 char direccion_metro(int pasajeroX, int pasajeroY, int paradaX, int paradaY)
 {
-	return 'C';
+	if (pasajeroX == paradaX && pasajeroY == paradaY)
+		return 'C';
+	else if (pasajeroX == paradaX && pasajeroY > paradaY) {
+		return 'S';
+	}
+	else if (pasajeroX < paradaX && pasajeroY == paradaY){
+		return 'E';
+	}
+	else if (pasajeroX > paradaX && pasajeroY == paradaY)
+	{
+		return 'W';
+	}
+	else if (pasajeroX == paradaX && pasajeroY < paradaY)
+	{
+		return 'N';
+	}
+	
 }
 
 
