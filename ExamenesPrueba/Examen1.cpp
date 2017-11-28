@@ -1,57 +1,105 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-void Exercici1()
+//Hacer una función que modifique una variable incrementándola en uno
+//Crear una array de 5 números
+//Llenar la array de 5 elementos con números leídos mediante scanf
+//Duplicar los valores de dentro de la array
+//Printar por pantalla el número más grande
+
+void PlusOne(int &a)
 {
-	//Escribe un programa que imprima las letras minúsculas en posiciones impares.
-
-	for (char letra ='a'; letra <= 'z'; letra++)
-	{
-		if(letra & 1) 
-		printf("%c ,", letra);
-	}
-	printf("\n");
+	a++;
 }
 
-void Exercici2(int num)
+void array1()
 {
-	/*Escribe un programa que muestre en tres columnas, el número, el cuadrado
-	y el cubo de los 5 primeros números enteros a partir del número contenido
-	en num incluido.*/
+	int array1[5];
+	int aux;
+	for (int i = 0; i < 5; i++)
+	{
+		scanf_s("%d", &aux);
+		array1[i] = aux;
+	}
+
+	printf("Este array contiene: \n");
 
 	for (int i = 0; i < 5; i++)
 	{
-		printf("%d  %d  %d \n", num, num*num, num*num*num);
-		num++;
+		array1[i];
+		printf("%d ", array1[i]);
 	}
-}
 
-void Exercici3()
-{
-	char a;
+	printf("\n");
 
-	do 
+
+	printf("Su multiplicacion es: \n");
+
+	for (int i = 0; i < 5; i++)
 	{
-		scanf("%c", &a);
-	
-		if (a >= 'a' && a <= 'z' && a >= 0 && a <= 9)
-		{
-			printf("%c", a);
-		}
-		else
-			printf("ERROR");
+		array1[i] *= 2;
+		printf("%d ", array1[i]);
+
 	}
-	while (a != '*');
-}
 
-void Exercici4(int num, char letra)
-{
+	printf("\n");
 
+	printf("Su numero mas grande es: \n");
+
+	int aux2 = array1[0];
+
+	for (int i = 1; i < 5; i++)
+	{
+		if (array1[i] > aux2)
+		{
+			aux2 = array1[i];
+		}
+	}
+
+	printf("%d ", aux2);
 }
 
 void main()
 {
-	Exercici1();
-	Exercici2(5);
-	Exercici3();
+	srand(time(NULL));
+	int num1 = 5;
+	PlusOne(num1);
+	array1();
+
+	printf("\n");
+	//Cread una struct Vector2 que tenga X y Y.
+
+	struct Vector2 {
+
+		float x;
+		float y;
+	};
+
+	//Cread una array de Vectores
+
+	Vector2 arr[5];
+	
+	for (int i = 0; i < 5; i++)
+	{
+		arr[i].x = 0;
+		arr[i].y = 0;
+	} //Inicializad la array de vectores a 0
+	
+	  //Haced que cada vector sea un número random entre 0 y 1(ejemplo: 0.05).
+
+	for (int i = 0; i < 5; i++)
+	{
+		arr[i].x = (rand() % 11) / 10;
+		arr[i].y = (rand() % 11) / 10; //
+	}
+	//Imprimid por pantalla los vectores impares
+
+	for (int i = 0; i < 5; i++)
+	{
+		if (i == 1 || i == 3 || i == 5)
+		{
+			printf("%f:%f \n", arr[i].x, arr[i].y);
+		}
+	}
 }
